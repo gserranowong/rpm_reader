@@ -14,24 +14,28 @@ def testlines(color):
         tft.line((0,0),(x, tft.size()[1] - 1), color)
     for y in range(0, tft.size()[1], 6):
         tft.line((0,0),(tft.size()[0] - 1, y), color)
+    tft.render()
 
     tft.fill(TFT.BLACK)
     for x in range(0, tft.size()[0], 6):
         tft.line((tft.size()[0] - 1, 0), (x, tft.size()[1] - 1), color)
     for y in range(0, tft.size()[1], 6):
         tft.line((tft.size()[0] - 1, 0), (0, y), color)
+    tft.render()
 
     tft.fill(TFT.BLACK)
     for x in range(0, tft.size()[0], 6):
         tft.line((0, tft.size()[1] - 1), (x, 0), color)
     for y in range(0, tft.size()[1], 6):
         tft.line((0, tft.size()[1] - 1), (tft.size()[0] - 1,y), color)
+    tft.render()
 
     tft.fill(TFT.BLACK)
     for x in range(0, tft.size()[0], 6):
         tft.line((tft.size()[0] - 1, tft.size()[1] - 1), (x, 0), color)
     for y in range(0, tft.size()[1], 6):
         tft.line((tft.size()[0] - 1, tft.size()[1] - 1), (0, y), color)
+    tft.render()
 
 def testfastlines(color1, color2):
     tft.fill(TFT.BLACK)
@@ -39,17 +43,20 @@ def testfastlines(color1, color2):
         tft.hline((0,y), tft.size()[0], color1)
     for x in range(0, tft.size()[0], 5):
         tft.vline((x,0), tft.size()[1], color2)
+    tft.render()
 
 def testdrawrects(color):
     tft.fill(TFT.BLACK);
     for x in range(0,tft.size()[0],6):
         tft.rect((tft.size()[0]//2 - x//2, tft.size()[1]//2 - x/2), (x, x), color)
+    tft.render()
 
 def testfillrects(color1, color2):
     tft.fill(TFT.BLACK);
     for x in range(tft.size()[0],0,-6):
         tft.fillrect((tft.size()[0]//2 - x//2, tft.size()[1]//2 - x/2), (x, x), color1)
         tft.rect((tft.size()[0]//2 - x//2, tft.size()[1]//2 - x/2), (x, x), color2)
+    tft.render()
 
 
 def testfillcircles(radius, color):
@@ -61,6 +68,7 @@ def testdrawcircles(radius, color):
     for x in range(0, tft.size()[0] + radius, radius * 2):
         for y in range(0, tft.size()[1] + radius, radius * 2):
             tft.circle((x, y), radius, color)
+    tft.render()
 
 def testtriangles():
     tft.fill(TFT.BLACK);
@@ -77,6 +85,7 @@ def testtriangles():
         y += 4
         z -= 4
         color += 100
+    tft.render()
 
 def testroundrects():
     tft.fill(TFT.BLACK);
@@ -94,6 +103,7 @@ def testroundrects():
             h -= 6
             color += 1100
         color += 100
+    tft.render()
 
 def tftprinttest():
     tft.fill(TFT.BLACK);
@@ -105,6 +115,7 @@ def tftprinttest():
     tft.text((0, v), "Hello World!", TFT.GREEN, sysfont, 3, nowrap=True)
     v += sysfont["Height"] * 3
     tft.text((0, v), str(1234.567), TFT.BLUE, sysfont, 4, nowrap=True)
+    tft.render()
     time.sleep_ms(1500)
     tft.fill(TFT.BLACK);
     v = 0
@@ -125,10 +136,12 @@ def tftprinttest():
     tft.text((0, v), str(time.ticks_ms() / 1000), TFT.PURPLE, sysfont)
     v += sysfont["Height"]
     tft.text((0, v), " seconds.", TFT.WHITE, sysfont)
+    tft.render()
 
 def test_main():
     tft.fill(TFT.BLACK)
     tft.text((0, 0), "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur adipiscing ante sed nibh tincidunt feugiat. Maecenas enim massa, fringilla sed malesuada et, malesuada sit amet turpis. Sed porttitor neque ut ante pretium vitae malesuada nunc bibendum. Nullam aliquet ultrices massa eu hendrerit. Ut sed nisi lorem. In vestibulum purus a tortor imperdiet posuere. ", TFT.WHITE, sysfont, 1)
+    tft.render()
     time.sleep_ms(1000)
 
     tftprinttest()
@@ -149,6 +162,7 @@ def test_main():
     tft.fill(TFT.BLACK)
     testfillcircles(10, TFT.BLUE)
     testdrawcircles(10, TFT.WHITE)
+    tft.render()
     time.sleep_ms(500)
 
     testroundrects()

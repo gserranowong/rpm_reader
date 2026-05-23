@@ -66,6 +66,12 @@ class Vec2:
             return Vec2(x, y)
 
         return NotImplemented
+    
+    def conj(self):
+        return Vec2(self.x, -self.y)
+    
+    def trans(self):
+        return Vec2(self.y, self.x)
 
     def __itruediv__(self, k):
         if isinstance(k, (int, float)):
